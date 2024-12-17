@@ -5,7 +5,7 @@ a = Analysis(
     ['app.py','home.py','SQLManager.py','util.py'],
     pathex=[],
     binaries=[],
-    datas=[],
+    datas=[('image/打工人.gif', 'image'),('image/bg.png', 'image'), (robot.ico, '.')],
     hiddenimports=[],
     hookspath=[],
     hooksconfig={},

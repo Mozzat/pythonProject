@@ -2,7 +2,7 @@
 Author: mozzat taogroups@163.com
 Date: 2024-12-07 22:51:20
 LastEditors: mozzat taogroups@163.com
-LastEditTime: 2024-12-15 02:15:02
+LastEditTime: 2024-12-17 14:05:39
 FilePath: /pythonProject/util.py
 Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 '''
@@ -56,11 +56,12 @@ def getProductQualityByName(name):
 
 # 判断是不是特卖产品 以T或者B开头
 def jundgeIsLowPriceProduct(string):
-    string = string.upper()
-    if string.startswith("T") or string.startswith("B"):
-        return True
-    else:
-        return False
+    return is_b_followed_by_chinese_or_dash(string)
+    # string = string.upper()
+    # if string.startswith("T") or string.startswith("B"):
+    #     return True
+    # else:
+    #     return False
 
 def getResultWeight(w):
     weight = getProductWeightByName(w)
@@ -71,3 +72,8 @@ def getResultWeight(w):
         # 全部转成千克计算
         weightNum = weightNum / 1000.0
     return weightNum
+
+def is_b_followed_by_chinese_or_dash(s):
+    string = s.upper()
+    pattern = r'^[BT][\u4e00-\u9fa5-]+$'
+    return bool(re.match(pattern, string))

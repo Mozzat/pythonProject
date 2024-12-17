@@ -2,7 +2,7 @@
  * @Author: mozzat taogroups@163.com
  * @Date: 2024-12-07 22:13:34
  * @LastEditors: mozzat taogroups@163.com
- * @LastEditTime: 2024-12-12 17:37:17
+ * @LastEditTime: 2024-12-17 13:57:04
  * @FilePath: /pythonProject/readme.md
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
@@ -35,44 +35,3 @@
 （“货品名称”后面没有重量的要去“(分仓库存查询”查，物料名称后面无重量的默认是一公斤，前后以1000g为标准换算，前后都要看）
 
 当同任务单多个货品规格相同时可直接计算单片成本与出品率。（单片成本=品的总成本/品的总报工数，出品率=总报工数*货品规格/总实际领用量 ）
-
-
-ps 临时代码
-if item.lenth > 1:
-            #  多品
-            print('多品')
-
-
-
-        else :
-            #  单品
-            item1 = item[0]
-            for item in totalArr: 
-                # 总成本
-                length = len(item) -1
-                amountTurbe = item[length]
-                firstTurbe = item[0]
-                weight = util.getProductWeightByName(firstTurbe[2])
-                weightNum = util.getProductQualityByName(weight)
-                for dic in item:
-                    bgs = dic[4]
-                    sjlql = dic[9]
-                    if dic[6] == '原料':
-                        # 判断千克和g
-                        # totalWeight = bgs * weight
-                        # 表示千克
-                        weightS = str(weight).lower()
-                        if weightS.find("g") != -1: 
-                            totalWeight = bgs * weightNum / 1000
-                        else:
-                            totalWeight = bgs * weightNum
-
-                        sjlqlS = str(sjlql).lower()
-                        if sjlqlS.find("g") != -1:
-                            sjlqlNum = util.getProductQualityByName(str(dic[9]))
-                            sjlql = sjlqlNum / 1000
-                        
-                        cpl = totalWeight / sjlql
-                        print("出品率", cpl,firstTurbe[1])
-                    else:
-                        continue
