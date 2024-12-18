@@ -2,7 +2,7 @@
 Author: mozzat taogroups@163.com
 Date: 2024-12-09 15:15:47
 LastEditors: mozzat taogroups@163.com
-LastEditTime: 2024-12-17 15:12:01
+LastEditTime: 2024-12-18 09:00:36
 FilePath: /pythonProject/app.py
 Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 '''
@@ -12,8 +12,8 @@ from tkinter import filedialog
 import home
 import SQLManager
 from PIL import Image, ImageTk
-import ttkbootstrap as ttk
-from ttkbootstrap import Button
+from pathlib import Path
+PATH = Path(__file__).parent / 'image'
 
 def open_folder():
     folder_selected = filedialog.askopenfilename()
@@ -32,7 +32,7 @@ def main():
     root = tk.Tk()
     root.title("桃桃子")
     root.geometry("600x600")  # 设置窗口大小为 600x600
-
+    
     # 创建按钮
     button = tk.Button(root, text="选择文件夹", command=open_folder)
     button.pack(pady=100)
