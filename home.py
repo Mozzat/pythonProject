@@ -106,10 +106,10 @@ def marchMoreProductsData(data):
                     chpr = 0
                 print('原料摊销KG：' + str(yltx), '原料摊销金额：' + str(yltxje), '辅料摊销金额：' + str(fltxje), '单片成本：' + str(dpcost), '出品率：' + str(chpr))
                 lastData1 = list(lastData)
-                lastData1[2] = "" if yltx == 0 else round(yltx,2) 
-                lastData1[3] = "" if yltxje == 0 else round(yltxje,2) 
-                lastData1[4] = "" if fltxje == 0 else round(fltxje,2) 
-                lastData1[5] = "" if dpcost == 0 else '￥' + str(round(dpcost,2))
+                lastData1[2] = "" if yltx == 0 else yltx
+                lastData1[3] = "" if yltxje == 0 else yltxje
+                lastData1[4] = "" if fltxje == 0 else fltxje
+                lastData1[5] = "" if dpcost == 0 else '￥' + str(dpcost)
                 lastData1[6] = "" if chpr == 0 else str(round(chpr * 100,2)) + '%'
                 lastData1[9] = str(y_costVolume + f_costVolume) 
                 lastData1[10] = str(round(totalCost,2)) 
@@ -137,10 +137,10 @@ def marchMoreProductsData(data):
                 chpr = 0
             print('原料摊销KG：' + str(yltx), '原料摊销金额：' + str(yltxje), '辅料摊销金额：' + str(fltxje), '单片成本：' + str(dpcost), '出品率：' + str(chpr))
             lastData1 = list(lastData)
-            lastData1[2] = "" if yltx == 0 else round(yltx,2) 
-            lastData1[3] = "" if yltxje == 0 else round(yltxje,2) 
-            lastData1[4] = "" if fltxje == 0 else round(fltxje,2) 
-            lastData1[5] = "" if dpcost == 0 else '￥' + str(round(dpcost,2))
+            lastData1[2] = "" if yltx == 0 else yltx
+            lastData1[3] = "" if yltxje == 0 else yltxje
+            lastData1[4] = "" if fltxje == 0 else fltxje
+            lastData1[5] = "" if dpcost == 0 else '￥' + str(dpcost)
             lastData1[6] = "" if chpr == 0 else str(round(chpr * 100,2)) + '%'
             lastData1[9] = str(round(y_costVolume + f_costVolume,2)) 
             lastData1[10] = str(round(totalCost,2)) 
