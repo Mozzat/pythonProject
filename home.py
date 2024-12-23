@@ -112,7 +112,7 @@ def marchMoreProductsData(data):
                 lastData1[5] = "" if dpcost == 0 else '￥' + str(dpcost)
                 lastData1[6] = "" if chpr == 0 else str(round(chpr * 100,2)) + '%'
                 lastData1[9] = str(y_costVolume + f_costVolume) 
-                lastData1[10] = str(round(totalCost,2)) 
+                lastData1[10] = str(totalCost)
                 lastData2 = tuple(lastData1)
                 item[itemCount] = lastData2
                 continue
@@ -126,7 +126,7 @@ def marchMoreProductsData(data):
             fltxje = (f_cost / f_bgs) * bgs
             dpcost = (yltxje + fltxje) / bgs
             if yltx == 0:
-                    yltx = 1
+                 yltx = 1
             chpr = (bgs * weightNum) / yltx
             ck = item1[14]
             # 看是不是余料仓 如果是余料仓 成本是0
@@ -142,8 +142,8 @@ def marchMoreProductsData(data):
             lastData1[4] = "" if fltxje == 0 else fltxje
             lastData1[5] = "" if dpcost == 0 else '￥' + str(dpcost)
             lastData1[6] = "" if chpr == 0 else str(round(chpr * 100,2)) + '%'
-            lastData1[9] = str(round(y_costVolume + f_costVolume,2)) 
-            lastData1[10] = str(round(totalCost,2)) 
+            lastData1[9] = str(y_costVolume + f_costVolume) 
+            lastData1[10] = str(totalCost) 
             lastData2 = tuple(lastData1)
             item[itemCount] = lastData2
             
@@ -158,7 +158,7 @@ def marchMoreProductsData(data):
             totalLqlNum = util.getProductQualityByName(str(firstModel[9]))
             totalLql = totalLqlNum / 1000
         total = firstModel[10]
-        for j in range(count):
+        for j in range(1,count):
             if j == 0:
                 continue
             else:
@@ -170,22 +170,23 @@ def marchMoreProductsData(data):
                         sjlql = item1[9]
                         sjlqlS = str(sjlql).lower()
 
-                        if sjlqlS.find("g") != -1:
-                            sjlqlNum = util.getProductQualityByName(str(item1[9]))
-                            sjlql = sjlqlNum / 1000
-                        else:
-                            #特殊情况 产品是成品 用产品的容量*领取量
-                            weightTemp = util.getProductWeightByName(item1[8])
-                            if str(weightTemp).lower().find("g") != -1:
-                                weightNumTemp = util.getProductQualityByName(weightTemp)
-                                sjlql = (weightNumTemp / 1000.0) * sjlql
+                        if item1[6] == "原料":
+                            if sjlqlS.find("g") != -1:
+                                sjlqlNum = util.getProductQualityByName(str(item1[9]))
+                                sjlql = sjlqlNum / 1000
+                            else:
+                                #特殊情况 产品是成品 用产品的容量*领取量
+                                weightTemp = util.getProductWeightByName(item1[8])
+                                if str(weightTemp).lower().find("g") != -1:
+                                    weightNumTemp = util.getProductQualityByName(weightTemp)
+                                    sjlql = (weightNumTemp / 1000.0) * sjlql
                         total += item1[10]
                         totalLql += sjlql
                     else:
                         continue
         arr = list(firstModel)
-        arr[9] = str(round(totalLql,2))
-        arr[10] = str(round(total,2))
+        arr[9] = str(totalLql)
+        arr[10] = str(total)
         firstModel1 = tuple(arr)
         tempArr.append(firstModel1)
     tempArr.append(data[0][firstCount])
